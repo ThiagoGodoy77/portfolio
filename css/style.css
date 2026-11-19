@@ -1,0 +1,542 @@
+﻿/* ==========================================
+   1. VARIABLES Y TEMAS (CLARO / OSCURO)
+   ================================---------- */
+:root {
+    --bg-nivel-1: #ffffff;
+    --bg-nivel-2: #f8fafc;
+    --bg-nivel-3: #f1f5f9;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --accent: #0f172a;
+    --accent-hover: #3b82f6;
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
+    --shadow-base: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    --shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    --easing-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.dark-theme {
+    --bg-nivel-1: #09090b;
+    --bg-nivel-2: #18181b;
+    --bg-nivel-3: #09090b;
+    --text-main: #f8fafc;
+    --text-muted: #a1a1aa;
+    --accent: #f8fafc;
+    --accent-hover: #60a5fa;
+    --card-bg: #18181b;
+    --card-border: #27272a;
+    --shadow-base: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================
+   2. ESTILOS GLOBALES Y RESET
+   ================================---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-muted) var(--bg-nivel-1);
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--text-main);
+    line-height: 1.7;
+    overflow-x: hidden;
+    background-color: var(--bg-nivel-1);
+    transition: background-color 0.4s ease, color 0.4s ease;
+    padding-bottom: 5rem;
+}
+
+/* ==========================================
+   3. NAVEGACIÓN Y ENCABEZADO
+   ================================---------- */
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    z-index: 1000;
+    gap: 3rem;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.dark-theme #navbar {
+    background: rgba(9, 9, 11, 0.85);
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-list a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s var(--easing-smooth);
+}
+
+.nav-list a:hover {
+    color: var(--accent-hover);
+}
+
+.btn-theme {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--card-border);
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s var(--easing-smooth), color 0.3s var(--easing-smooth), border-color 0.3s var(--easing-smooth);
+}
+
+.btn-theme:hover {
+    background: var(--text-main);
+    color: var(--bg-nivel-1);
+}
+
+/* ==========================================
+   4. SECCIONES Y CONTENEDORES
+   ================================---------- */
+.section-container {
+    padding: 8rem 2rem 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: background-color 0.4s ease;
+}
+
+#sobre-mi, #formacion { background-color: var(--bg-nivel-1); }
+#proyectos, #empleos { background-color: var(--bg-nivel-2); }
+#contacto { background-color: var(--bg-nivel-3); min-height: 40vh; }
+
+.section-header {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    
+    min-height: 2.8em; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 1rem;
+}
+
+/* ==========================================
+   5. COMPONENTES Y TARJETAS
+   ================================---------- */
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.skills-list span {
+    color: var(--text-main);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    border: 1px solid var(--card-border);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: transform 0.3s var(--easing-smooth), border-color 0.3s var(--easing-smooth), color 0.3s var(--easing-smooth);
+    will-change: transform;
+}
+
+.skills-list span:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-hover);
+    color: var(--accent-hover);
+}
+
+.sobre-mi-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sobre-mi-content p {
+    max-width: 650px;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+}
+
+.category-title {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    margin: 2rem 0 2.5rem 0;
+    font-weight: 700;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.card-dynamic {
+    background: var(--card-bg);
+    padding: 3rem 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-base);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    transition: transform 0.4s var(--easing-smooth), box-shadow 0.4s var(--easing-smooth), border-color 0.4s ease;
+    will-change: transform, box-shadow;
+}
+
+.card-dynamic:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--text-muted);
+}
+
+.featured-card {
+    border-top: 4px solid var(--accent-hover);
+}
+
+.badge {
+    background-color: var(--text-main);
+    color: var(--bg-nivel-1);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.card-dynamic h4 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.card-dynamic p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    flex-grow: 1;
+}
+
+.link-centered {
+    border-bottom: 2px solid var(--accent-hover);
+    padding-bottom: 4px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s var(--easing-smooth);
+}
+
+.link-centered:hover {
+    color: var(--accent-hover);
+}
+
+.action-buttons, .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.btn {
+    background: var(--text-main);
+    color: var(--bg-nivel-1);
+    padding: 0.8rem 2.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    transition: transform 0.3s var(--easing-smooth), background-color 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* ==========================================
+   6. ANIMACIONES
+   ================================---------- */
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s var(--easing-smooth), transform 0.8s var(--easing-smooth);
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+.typewriter-cursor {
+    border-right: 3px solid var(--text-main);
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+#typewriter-text {
+    display: inline-block;
+    min-width: 450px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* ==========================================
+   7. WIDGET FLOTANTE DE AUDIO Y CONTROLES
+   ================================---------- */
+.audio-widget {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: var(--shadow-hover);
+    z-index: 1001;
+    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    width: max-content;
+    max-width: 90vw;
+}
+
+.audio-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.audio-nav {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 0;
+}
+
+.audio-nav:hover {
+    color: var(--text-main);
+    transform: scale(1.1);
+}
+
+#audio-toggle {
+    background: var(--text-main);
+    color: var(--bg-nivel-1);
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: transform 0.3s var(--easing-smooth), background-color 0.3s ease;
+    will-change: transform;
+    flex-shrink: 0;
+}
+
+#audio-toggle:hover {
+    transform: scale(1.08);
+    background: var(--accent-hover);
+}
+
+#audio-toggle:active {
+    transform: scale(0.95);
+}
+
+.song-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 0.75rem;
+    text-align: left;
+    line-height: 1.3;
+    min-width: 150px;
+}
+
+.song-label {
+    color: var(--text-muted);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+#song-title {
+    color: var(--text-main);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+    width: 150px;
+}
+
+.audio-widget:hover .progress-container {
+    max-height: 20px;
+    opacity: 1;
+    margin-top: 0.4rem;
+}
+
+#time-current, #time-total {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+#audio-progress {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--card-border);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+#audio-progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--text-main);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#audio-progress::-webkit-slider-thumb:hover {
+    transform: scale(1.3);
+}
+
+/* ==========================================
+   8. DISEÑO ADAPTATIVO (MEDIA QUERIES)
+   ================================---------- */
+@media (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem;
+        position: relative;
+    }
+
+    body {
+        padding-top: 0;
+        padding-bottom: 6rem;
+    }
+
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem 1.2rem;
+    }
+
+    .btn-theme {
+        margin-left: 0;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .section-container {
+        padding: 4rem 1rem 3rem 1rem;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .audio-widget {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        justify-content: center;
+        max-width: calc(100% - 2rem);
+        margin: 0 auto;
+        width: auto;
+    }
+    
+    .progress-container {
+        max-height: 20px;
+        opacity: 1;
+        margin-top: 0.4rem;
+        width: 100%;
+    }
+    .btn.copied {
+    background-color: #10b981 !important; /* Color verde de éxito */
+    color: #ffffff !important;
+}
+}
