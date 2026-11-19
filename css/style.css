@@ -39,20 +39,23 @@
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
 html {
     scrollbar-width: thin;
     scrollbar-color: var(--text-muted) var(--bg-nivel-1);
     scroll-behavior: smooth;
-    max-width: 100%;
-    overflow-x: hidden;
 }
 
 body {
     font-family: system-ui, -apple-system, sans-serif;
     color: var(--text-main);
     line-height: 1.7;
-    max-width: 100%;
-    overflow-x: hidden;
     background-color: var(--bg-nivel-1);
     transition: background-color 0.4s ease, color 0.4s ease;
     padding-bottom: 5rem;
@@ -156,6 +159,7 @@ body {
     align-items: center;
     width: 100%;
     max-width: 1000px;
+    min-width: 0;
 }
 
 .sobre-mi-content p {
