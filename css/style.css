@@ -298,7 +298,6 @@ body {
     background: transparent;
     display: flex;
     position: relative;
-    /* Difumina los bordes izquierdo y derecho para evitar cortes bruscos */
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
     mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
@@ -311,7 +310,6 @@ body {
     will-change: transform;
 }
 
-/* Pausa el movimiento si el usuario pasa el cursor o toca una etiqueta */
 .carousel-infinite:hover .carousel-track {
     animation-play-state: paused;
 }
@@ -569,6 +567,15 @@ body {
 
     .card-dynamic {
         padding: 2rem 1.5rem;
+    }
+
+    .carousel-infinite {
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    }
+
+    .carousel-track {
+        animation-duration: 20s;
     }
 
     .audio-widget {

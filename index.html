@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<title>Portfolio - Thiago Godoy</title>
-				<link rel="stylesheet" href="./css/style.css">
+				<link rel="stylesheet" href="./css/style.css?v=2">
 	</head>
 	<body>
 		<nav id="navbar" aria-label="Navegación principal">
@@ -156,6 +156,52 @@
 						</div>
 					</div>
 
+					<style>
+						.carousel-infinite {
+						overflow: hidden;
+						width: 100%;
+						padding: 15px 0;
+						background: transparent;
+						display: flex;
+						}
+
+						.carousel-track {
+						display: flex;
+						width: max-content;
+						flex-wrap: nowrap;
+						/* Al tener 4 bloques, nos movemos exactamente el 25% (un bloque entero) y reiniciamos */
+						animation: scrollInfinite 27s linear infinite;
+						}
+
+						.carousel-item {
+						padding: 0 15px; /* Espaciado constante entre habilidades */
+						flex-shrink: 0;
+						}
+
+						.carousel-item span {
+						display: inline-block;
+						background: #f3f4f6;
+						color: #374151;
+						padding: 10px 22px;
+						border-radius: 50px;
+						font-family: system-ui, -apple-system, sans-serif;
+						font-size: 14px;
+						font-weight: 500;
+						white-space: nowrap;
+						border: 1px solid #e5e7eb;
+						}
+
+						@keyframes scrollInfinite {
+						0% {
+						transform: translateX(0);
+						}
+						100% {
+						transform: translateX(-25%); /* Se desplaza un bloque completo y vuelve a empezar de forma imperceptible */
+						}
+						}
+					</style>
+
+
 					<div class="action-buttons">
 					</div>
 				</div>
@@ -243,7 +289,7 @@
 						<p>Desarrollo y modelización de sistemas propietarios utilizando un lenguaje de programación específico.</p>
 						<p> Referencia: Paola Sulkies - RRHH </p>
 						<p></p>
-							<a href="https://docs.google.com/document/d/1KincV-TJAdNXv8ceCkEg7La5Tz-Vufz8/edit?usp=sharing&ouid=100562154247461359813&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="link-centered">Carta de Recomendacion</a>
+						<a href="https://docs.google.com/document/d/1KincV-TJAdNXv8ceCkEg7La5Tz-Vufz8/edit?usp=sharing&ouid=100562154247461359813&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="link-centered">Carta de Recomendacion</a>
 					</article>
 				</div>
 			</section>
@@ -285,5 +331,6 @@
 			</audio>
 		</div>
 
-		<script src="./js/script.js"></script>	</body>
+		<script src="./js/script.js"></script>
+	</body>
 </html>
